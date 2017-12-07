@@ -1,0 +1,105 @@
+.contentmodal{
+    color: #fff;
+}
+.contentmodal form{
+    margin: auto;
+    margin-top: 177px;
+    width:600px;
+    text-align: center;
+}
+.contentmodal form>div>span:first-child{
+    width: 130px;
+    height:30px;
+    line-height: 30px;
+    display: inline-block;
+}
+.contentmodal form .dqyhm{
+    width: 253px;
+    display: inline-block;
+    text-align: left;
+    padding-left: 10px;
+}
+.contentmodal form>div{
+    margin-bottom: 30px;
+    position: relative;
+}
+.contentmodal form>div input{
+    width: 253px;
+    height:40px;
+    border-radius: 8px;
+    background: #606060;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+}
+.contentmodal form>div input:focus{
+    background: #fff;
+}
+.contentmodal form button{
+    background: #186DD1;
+    border-radius: 8px;
+    width: 156px;
+    height:40px;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+}
+.contentmodal form>div span.close{
+    background: #989898;
+    border-radius: 8px;
+    width: 156px;
+    height:40px;
+    display: inline-block;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    line-height: 40px;
+    vertical-align: middle;
+    margin-right: 27px;
+    margin-left: 27px;
+    text-align: center;
+    cursor:pointer;
+}
+.ts{
+    display:none;
+   position: absolute;
+    width: 260px;
+    height: 28px;
+    line-height:28px;
+    text-align: left;
+    padding-left:10px;
+    margin-left:5px;
+    margin-top:6px;
+    font-size: 12px;
+    color: #EA4D23;
+    right:-155px;
+    top:0;
+}
+.change-suc-box{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.50);
+    display:none;
+    z-index:9999;
+    font-size:16px;
+    color: #4A4A4A;
+}
+.change-suc-box>div{
+    position:absolute;
+    top:40%;
+    left:50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background: #F0F0F0;
+    border-radius: 10px;
+    width:340px;
+    height:120px;
+    text-align:center;
+    padding-top:42px;
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>背景音乐操作面板</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/operation-panel.css">
+</head>
+<body>
+<div class="header">
+    <div class="logo left"></div>
+    <div class="headRight right">
+        <div class="lang left">
+            <span class="lang-pic chinese"></span>
+            <span class></span>
+            <div class="lang-sel">
+                <p class="lang-cn"></p>
+                <p class="lang-en"></p>
+            </div>
+        </div>
+        <div class="left">
+            <span class="xgmm"></span>
+        </div>
+        <div class="left">
+            <span class="tuichu"></span>
+        </div>
+
+    </div>
+</div>
+<div id="content">
+    <div>
+        <!--导入按钮-->
+        <div class="import-btn">
+            <!--<form enctype="multipart/form-data"  method="post">-->
+                <div class="import import-song">
+                    <span class="song-pic"></span>
+                    <span class="ipt-song-btn">导入歌曲</span>
+                    <input type="file" id="fileToUpload" name="fileToUpload" accept="audio/*" >
+                </div>
+                <div class="import import-file">
+                    <span class="songs-pic"></span>
+                    <span class="ipt-file-btn">导入文件夹</span>
+                    <input type="file" webkitdirectory id="folder" name="folder">
+                </div>
+            <!--</form>-->
+
+        </div>
+        <!--设备列表-->
+        <div class="sb-module">
+            <div class="file-group">
+                <span class="drop-pic"></span>
+                <span class="fm-pic"></span>
+                <span class="sb">设备</span>
+            </div>
+            <div class="group-list">
+                <!--<div class="folder-item choosed">
+                    <span class="group-pic"></span>
+                    <span class="group-name">我的收藏</span>
+                </div>
+                <div class="folder-item">
+                    <span class="group-pic"></span>
+                    <span class="group-name">欢迎光临</span>
+                </div>-->
+            </div>
+            <ul class="btns sb-btns">
+                <li class="sb-btns-creat"></li>
+                <li class="sb-btns-edit"></li>
+                <li class="sb-btns-del"></li>
+            </ul>
+        </div>
+        <!--歌曲列表-->
+        <div class="song-module">
+            <table class="song-table-head">
+                <thead>
+                <tr>
+                    <th>
+                        <span class="choose-box"></span>
+                    </th>
+                    <th class="head-song-name">名称</th>
+                    <th class="head-song-kb">大小</th>
+                    <th class="head-song-form">格式</th>
+                </tr>
+                </thead>
+            </table>
+            <div class="song-table-box">
+                <table class="song-table">
+                    <tbody>
+                    <!--<tr>
+                        <td><span class="choose-box"></span></td>
+                        <td class="song-name">李荣浩 - 模特</td>
+                        <td class="song-kb">156KB</td>
+                        <td class="song-form">MP3</td>
+                    </tr>-->
+                    </tbody>
+                </table>
+            </div>
+            <ul class="btns song-btns">
+                <li class="song-btns-move"></li>
+                <li class="song-btns-del"></li>
+                <li class="song-btns-dl"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+    <!--新建文件夹-->
+<div class="creat-file-box" >
+    <div class="modal-content">
+        <div>
+            <p><span class="nf">新建文件夹</span></p>
+            <input type="text"  id="newFileName" value="新建文件夹">
+        </div>
+        <button class="cancel">取消</button> <button class="sure">确定</button>
+    </div>
+
+</div>
+    <!--修改文件夹-->
+<div class="edit-file-box">
+    <div class="modal-content">
+        <div>
+            <span class="onf">原文件夹名称:</span>
+            <span id="F-fileName"></span>
+        </div>
+        <div>
+            <span class="cnf">修改文件夹名称:</span>
+            <input type="text" id="newName" value="请输入新名称">
+        </div>
+        <button class="cancel">取消</button> <button class="sure">确定</button>
+    </div>
+</div>
+    <!--删除文件夹提示-->
+<div class="del-file-box">
+    <div>
+        <p class="del-file-txt">确认删除所选文件夹吗？</p>
+        <div>
+            <button class="btn-cal del-file-cancel" type="button">取消</button>
+            <button class="btn-ok del-file-ok" type="button">确定</button>
+        </div>
+    </div>
+</div>
+
+    <!--点击歌曲移动-->
+<div class="s-m-prompt-box">
+    <div>
+        <h4 class="move-head">选择目标目录</h4>
+        <div class="target-file">
+            <!--<div>
+                <span></span>
+                <span class="target-file-name">我的收藏</span>
+            </div>
+            <div>
+                <span></span>
+                <span class="target-file-name">欢迎光临</span>
+            </div>-->
+        </div>
+        <div>
+            <button class="btn-cal move-cancel" type="button">取消</button>
+            <button class="btn-ok move-ok" type="button">移动</button>
+        </div>
+    </div>
+</div>
+
+<!--删除歌曲提示-->
+<div class="del-song-box">
+    <div>
+        <p class="del-song-txt">确认删除所选歌曲吗？</p>
+        <div>
+            <button class="btn-cal del-song-cancel" type="button">取消</button>
+            <button class="btn-ok del-song-ok" type="button">确定</button>
+        </div>
+    </div>
+</div>
+
+<!--文件大小提示-->
+<div class="file-kb-prompt-box">
+    <div>
+        <p class="file-kb-txt">请选择小于500M的文件上传！</p>
+        <button class="btn-ok file-kb-ok" type="button">确定</button>
+    </div>
+</div>
+
+<!--上传文件进度-->
+<div class="import-schedule-box">
+    <div>
+        <h4 class="importing">正在导入...</h4>
+        <p class="import-speed" id="import-speed"></p>
+        <progress id="progressBar" value="0" max="100" style="width: 386px;"></progress>
+        <p class="import-per" id="import-per"></p>
+        <button class="btn-cal import-cal" type="button">取消</button>
+    </div>
+</div>
+
+<a id="download"></a><!--下载-->
+
+<div id="box" style="display:none"></div>
+<!--footer-->
+<div class="footer">Copyright © 2017 Moorgen. All Right Reserved</div>
+
+</body>
+</html>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/upfile.js"></script>
+<script src="js/spark-md5.min.js"></script>
+<script src="js/loadfile.js"></script>
+<script src="js/loadfolder.js"></script>
+<script>
+    function translate(){
+        document.title = trans('背景音乐操作面板');
+        $('.ipt-song-btn').html(trans('导入歌曲'));
+        $('.ipt-file-btn').html(trans('导入文件夹'));
+        $('.sb').html(trans('设备'));
+        $('.default-file').html(trans('我的收藏'));
+        $('.head-song-name').html(trans('名称'));
+        $('.head-song-kb').html(trans('大小'));
+        $('.head-song-time').html(trans('时长'));
+        $('.head-song-form').html(trans('格式'));
+        $('.move-head').html(trans('选择目标目录'));
+        $('.move-cancel').html(trans('取消'));
+        $('.move-ok').html(trans('移动'));
+        $('.dl-txt').html(trans('下载到'));
+        $('.dl-ok').html(trans('下载'));
+        $('.dl-cancel').html(trans('取消'));
+        $('.file-kb-txt').html(trans('请选择小于500M的文件上传'));
+        $('.file-kb-cal').html(trans('取消'));
+        $('.file-kb-ok').html(trans('确定'));
+        $('.importing').html(trans('正在导入'));
+        $('.import-cal').html(trans('取消'));
+        $('.downloading').html(trans('正在下载'));
+        $('.dl-cal').html(trans('取消'));
+        $('.del-file-txt').html(trans('确认删除所选文件夹吗'));
+        $('.del-song-txt').html(trans('确认删除所选歌曲吗'));
+        $(".nf").html(trans('新建文件夹'));
+        $(".onf").html(trans('原文件夹名称:'));
+        $(".cnf").html(trans('修改文件夹名称:'));
+        $(".cancel").html(trans('取消'));
+        $(".sure").html(trans('确定'));
+
+        $("#newFileName").attr("value",trans('新建文件夹'));
+        $("#newName").attr("value",trans('请输入新名称'));
+    }
+</script>

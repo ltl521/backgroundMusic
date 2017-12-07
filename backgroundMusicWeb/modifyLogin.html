@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改密码</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/modifyLogin.css">
+</head>
+
+<body>
+<div class="header">
+    <div class="logo left"></div>
+    <div class="headRight right">
+        <div class="lang left">
+            <span class="lang-pic chinese"></span>
+            <span class></span>
+            <div class="lang-sel">
+                <p class="lang-cn"></p>
+                <p class="lang-en"></p>
+            </div>
+        </div>
+        <div class="left">
+            <span class="xgmm"></span>
+        </div>
+        <div class="left">
+            <span class="tuichu"></span>
+        </div>
+    </div>
+</div>
+<div class="contentmodal">
+    <form action="">
+        <div>
+            <span class="nowUser">当前用户名:</span>
+            <span class="dqyhm">admin</span>
+        </div>
+        <div>
+            <span class="nowPsd">当前密码:</span>
+            <input type="password" id="pwd">
+            <span class="ts ts2" >当前密码错误</span>
+        </div>
+        <div>
+            <span class="xgmm1">修改密码:</span>
+            <input type="password" id="new-pwd">
+            <span class="ts ts3">请输入6-16位字母与数字</span>
+        </div>
+        <div>
+            <span class="again">再次输入:</span>
+            <input type="password" id="new-pwd2">
+            <span class="ts ts4" >密码不一致</span>
+        </div>
+        <div>
+            <span class="close">取消</span> <button class="sure">确认修改</button>
+        </div>
+    </form>
+    <!--修改成功提示框-->
+    <div class="change-suc-box">
+        <div>用户名和密码修改成功！</div>
+    </div>
+</div>
+<div class="footer">Copyright © 2017 Moorgen. All Right Reserved</div>
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+//    中英文切换
+    function translate(){
+        document.title = trans('修改密码:');
+        $('.nowUser').html(trans('当前用户名:'));
+        $('.nowPsd').html(trans('当前密码:'));
+        $('.ts2').html(trans('当前密码错误'));
+        $('.ts4').html(trans('密码不一致'));
+        $('.xgmm1').html(trans('修改密码:'));
+        $('.again').html(trans('再次输入:'));
+        $('.close').html(trans('取消'));
+        $('.sure').html(trans('确认修改'));
+        $('.ts3').html(trans('请输入6-12位字母或数字'))
+    }
+
+//取消修改
+$('.close').on("click",function(){
+    $("#pwd").val("");
+    $("#new-pwd").val("");
+    $("#new-pwd2").val("")
+});
+
+
+var pwd;//原来的密码
+var new_pwd;//修改后的密码
+var new_pwd2;//二次输入密码
+/*//密码验证
+$("#new-pwd").on("blur",function(){
+    new_pwd=$("#new-pwd").val();
+    var reg=/^[a-z0-9]{6,16}$/;
+    if(new RegExp(reg).test(new_pwd)){
+        return;
+    }else{
+        $(".ts3").show();
+    }
+});*/
+//确认修改
+    $(".sure").on("click",function(e){
+        e.preventDefault();
+        pwd=$("#pwd").val();
+        new_pwd=$("#new-pwd").val();
+        new_pwd2=$("#new-pwd2").val();
+        if(pwd&&new_pwd&&new_pwd2){
+            //校验密码长度
+            if(new_pwd.length>=6&&new_pwd.length<=16){
+                //校验2次密码是否一致
+                if(!(new_pwd===new_pwd2)){//不一致
+                    $(".ts4").show();
+                }else{//一致
+                    $.ajax({
+                        type:"post",
+                        url:"/dealModifyLogin",
+                        data:{
+                            "pwd":pwd,
+                            "Newpwd":new_pwd
+                        },
+                        dataType:"json",
+                        success:function(result){
+                            if(result.ret==-14){
+                                $(".ts2").show();
+                            }
+                            else if(result.ret==-15){
+                                $(".ts3").show();
+                            }
+                            else if(result.ret==0){
+                                //修改成功返回登陆页面
+                                $(".change-suc-box").show();
+                                setTimeout(function(){
+                                    location.href="/login.html";
+                                } ,2000);
+                            }
+                        },
+                        error:function(){
+                            location.href="/error.html"
+                        }
+                    })
+                }
+            }else{
+                $(".ts3").show();
+            }
+        }else{
+            if(($(".lang-pic").hasClass("chinese"))){
+                alert("请输入完整信息")
+            }else{
+                alert("Please input full information");
+            }
+        }
+    });
+
+
+    $("form input").on("focus",function(){
+        $(this).siblings(".ts").hide();
+    })
+
+
+</script>
+</html>

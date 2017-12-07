@@ -1,0 +1,59 @@
+/*表单*/
+.loginForm{
+    width: 435px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.loginForm input{
+    border:none;
+}
+.loginForm>div{
+    margin-bottom:43px;
+}
+.loginForm>div>label{
+    width:28px;
+    height:29px;
+    margin-right:30px;
+    margin-bottom:-7px;
+}
+.user{
+    background:url(../img/slice.png) no-repeat 0 0;
+}
+.pwd{
+    background:url(../img/slice.png) no-repeat 0 -30px;
+}
+.loginForm>div>input{
+    width:253px;
+    height:45px;
+    padding-left:14px;
+    background: #606060;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #808080;
+}
+.loginForm>div>input:focus{
+    background: #FFFFFF;
+}
+.loginForm>div>input#submit{
+    background: #186DD1;
+    font-size: 18px;
+    color: #FFFFFF;
+    cursor:pointer;
+}
+.loginForm>div>span{
+    display: inline-block;
+    width:113px;
+    height:28px;
+    background:url(../img/slice.png) no-repeat 0 -368px;
+    text-align:center;
+    font-size: 12px;
+    color: #FFFFFF;
+    padding-top:5px;
+}
+

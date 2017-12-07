@@ -1,0 +1,574 @@
+body{
+    background:#232323;
+    padding-top:70px;
+}
+.footer{
+    position:static;
+    width:100%;
+    height:70px;
+    background: #232323;
+    text-align:center;
+    padding-top:20px;
+    font-size: 10px;
+    color: #606060;
+}
+#content{
+    width:100%;
+    padding-bottom:70px;
+    background:#151515;
+}
+#content>div{
+    width:1146px;
+    margin:0 auto;
+    overflow:hidden;
+}
+/*导入按钮*/
+.import-btn{
+    overflow:hidden;
+    margin:20px 0;
+}
+.import{
+    width:130px;
+    height:30px;
+    line-height:30px;
+    float:left;
+    text-align:center;
+    position:relative;
+    cursor:pointer;
+}
+.import-song{
+    background: #85B322;
+    margin-right:20px;
+    border-radius: 100px;
+}
+.import-song:hover{
+    background: #577812;
+}
+.import-file{
+    background: #2890E0;
+    border-radius: 33px;
+}
+.import-file:hover{
+    background: #16598C;
+}
+.import>span{
+    display:inline-block;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+.import>span.song-pic,.import>span.songs-pic{
+    width:17px;
+    height:16px;
+    margin-right:7px;
+}
+
+.import>span.song-pic{
+    background:url(../img/slice.png) no-repeat 0 -87px;
+    margin-bottom:-4px;
+}
+.import>span.songs-pic{
+    background:url(../img/slice.png) no-repeat 0 -102px;
+    margin-bottom:-3px;
+}
+.import>input{
+    position:absolute;
+    top:0;
+    left:0;
+    width:130px;
+    opacity: 0;
+    cursor:pointer;
+    filter:alpha(opacity=0);/*ie8兼容*/
+}
+/*设备列表*/
+.sb-module,.song-module{
+    float:left;
+    background: #272727;
+    border-radius: 10px;
+    position:relative;
+    height:600px;
+    position:relative;
+}
+.sb-module{
+    width:266px;
+    margin-right:15px;
+
+}
+.song-module{
+    width:864px;
+}
+.file-group{
+    position:absolute;
+    width:266px;
+    height:40px;
+    line-height:40px;
+    /*padding-left:14px;*/
+    z-index:10000;
+    background:#272727;
+}
+.file-group>span{
+    display:inline-block;
+    margin-right:9px;
+}
+.file-group>span.drop-pic{
+    width:8px;
+    height:7px;
+    background:url(../img/slice.png) no-repeat -62px -14px;
+    margin-left:14px;
+    margin-bottom:3px;
+}
+.file-group>span.fm-pic{
+    width:22px;
+    height:22px;
+    background:url(../img/slice.png) no-repeat 0 -246px;
+    margin-bottom:-7px;
+
+}
+ .group-list{
+     position: absolute;
+     top:27px;
+     z-index:300;
+     width:100%;
+     height:534px;
+     overflow-y:auto;
+     overflow-x:hidden;
+     padding:12px 0 20px 0;
+ }
+.group-list div.folder-item{
+    width:100%;
+    height:32px;
+    line-height:32px;
+    padding-left:60px;
+    cursor:pointer;
+}
+.group-list div.choosed{
+    background: #069EA6;
+    color: #FFFFFF;
+}
+.group-pic{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background:url(../img/slice.png) no-repeat 0 -266px;
+    margin-bottom:-4px;
+    margin-right:6px;
+}
+
+.group-list div.choosed .group-pic{
+    background:url(../img/slice.png) no-repeat -20px -266px;
+}
+.group-name{
+    display: inline-block;
+    width:120px;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    vertical-align: middle;
+}
+
+/*设备列表按钮组*/
+.btns{
+    position:absolute;
+    bottom:0;
+    height:50px;
+    background:#272727;
+    z-index:10000;
+}
+.btns>li{
+    float:left;
+    width:24px;
+    height:24px;
+    margin-right:28px;
+    cursor:pointer;
+}
+.btns>li.sb-btns-del,.btns>li.song-btns-dl{
+    margin-right:0;
+}
+.sb-btns{
+    padding:10px 69px 0 69px;
+}
+.sb-btns-creat{
+    background:url(../img/slice.png) no-repeat 0 -119px;
+}
+.sb-btns-creat:hover{
+    background:url(../img/slice.png) no-repeat -25px -119px;
+}
+.sb-btns-edit{
+    background:url(../img/slice.png) no-repeat 0 -144px;
+}
+.sb-btns-edit:hover{
+    background:url(../img/slice.png) no-repeat -25px -144px;
+}
+.sb-btns-del,.song-btns-del{
+    background:url(../img/slice.png) no-repeat 0 -194px;
+}
+.sb-btns-del:hover,.song-btns-del:hover{
+    background:url(../img/slice.png) no-repeat -25px -194px;
+}
+
+/*歌曲列表*/
+.song-table-head{
+    width:100%;
+    position:absolute;
+    z-index:10000;
+}
+.song-table-head th{
+    height:39px;
+    background: #343434;
+    border-right: 1px solid #232323;
+    text-align:left;
+    padding-left:16px;
+    color: #989898;
+}
+.song-table-head th:nth-child(1){
+    text-align:center;
+    padding-left:0;
+    width:10%;
+    border-top-left-radius: 10px;
+}
+.song-table-head th:first-child{/*ie8兼容*/
+    text-align:center;
+    padding-left:0;
+    width:10%;
+    border-top-left-radius: 10px;
+}
+.head-song-name{
+    width:40%;
+}
+.head-song-kb,.head-song-form{
+    width:25%;
+}
+.choose-box{
+    display:inline-block;
+    width:14px;
+    height:14px;
+    background: #414141;
+    border-radius: 2px;
+    cursor:pointer;
+}
+.box-choosed{
+    background:url(../img/slice.png) no-repeat 0 -320px;
+}
+/*歌曲列表外框*/
+.song-table-box{
+    position:absolute;
+    top:27px;
+    padding:12px 0;
+    height:535px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    width:100%;
+}
+.song-table{
+    width:100%;
+}
+.song-table tr.active{
+    background: #F2B011;
+    color: #FFFFFF;
+}
+.song-table td{
+    padding-left:20px;
+    height:32px;
+}
+.song-table tbody td:nth-child(1){
+    text-align:center;
+    padding-left:0;
+    width:10%;
+}
+.song-table tbody td:first-child{/*ie8兼容*/
+    text-align:center;
+    padding-left:0;
+    width:10%;
+}
+.song-name{
+    width:40%;
+}
+.song-kb,.song-form{
+    width:25%;
+}
+.song-table .song-kb{
+    padding-left:26px;
+}
+.song-table .song-form{
+    padding-left:32px;
+}
+
+/*歌曲列表按钮*/
+.song-btns{
+    padding:10px 368px 0 368px;
+}
+.song-btns-move{
+    background:url(../img/slice.png) no-repeat 0 -169px;
+}
+.song-btns-move:hover{
+    background:url(../img/slice.png) no-repeat -25px -169px;
+}
+.song-btns-dl{
+    background:url(../img/slice.png) no-repeat 0 -219px;
+}
+.song-btns-dl:hover{
+    background:url(../img/slice.png) no-repeat -25px -219px;
+}
+
+
+
+
+/*删除提示框*/
+.creat-file-box,.edit-file-box,.del-file-box,.del-song-box,.s-m-prompt-box,.dl-prompt-box,.file-kb-prompt-box,.import-schedule-box{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.50);
+    display:none;
+    z-index:999999999;
+    font-size:16px;
+    color: #4A4A4A;
+}
+.creat-file-box>div,.edit-file-box>div,.del-file-box>div,.del-song-box>div,.s-m-prompt-box>div,.dl-prompt-box>div,.file-kb-prompt-box>div,.import-schedule-box>div{
+    background: #F0F0F0;
+    border-radius: 10px;
+    position:absolute;
+    top:40%;
+    left:50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.del-file-box>div,.del-song-box>div{
+    width:360px;
+    height:150px;
+}
+.del-file-box>div>p,.del-song-box>div>p{
+    text-align:center;
+    margin-top:35px;
+    margin-bottom:37px;
+}
+.del-file-box>div>div>button,.del-song-box>div>div>button{
+    width:130px;
+    height:30px;
+}
+/*取消按钮统一样式*/
+.btn-cal{
+    background: #989898;
+    border-radius: 33px;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+.btn-cal:hover{
+    background: #646363;
+}
+/*确定按钮统一样式*/
+.btn-ok{
+    background: #2890E0;
+    border-radius: 100px;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+.btn-ok:hover{
+    background: #16598C;
+}
+.del-song-cancel,.del-file-cancel{
+    margin-left:38px;
+    margin-right:27px;
+}
+/*新建文件夹*/
+
+/*修改文件夹名称*/
+/*点击歌曲移动*/
+.s-m-prompt-box>div{
+    width:332px;
+    height:400px;
+}
+.s-m-prompt-box>div>h4{
+    text-align: center;
+    margin-top:22px;
+    margin-bottom:28px;
+}
+.target-file{
+    width:272px;
+    height:231px;
+    background: #FFFFFF;
+    border: 1px solid #D8D8D8;
+    border-radius: 8px;
+    margin:0 auto 24px auto;
+    overflow:auto;
+    padding-top:10px;
+}
+.target-file>div{
+    padding-left:25px;
+    height:32px;
+    line-height:32px;
+    font-size:14px;
+    cursor:pointer;
+}
+.target-file>div.clicked{
+    background: #85B322;
+    color: #FFFFFF;
+}
+.target-file>div>span{
+    display:inline-block;
+}
+.target-file>div>span:nth-child(1){
+    width:20px;
+    height:18px;
+    background:url(../img/slice.png) no-repeat 0 -288px;
+    margin-right:7px;
+    margin-bottom:7px;
+}
+.target-file>div>span:first-child{
+    width:20px;
+    height:18px;
+    background:url(../img/slice.png) no-repeat 0 -288px;
+    margin-right:7px;
+    margin-bottom:7px;
+}
+.target-file>div>span.target-file-name{
+    width:190px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
+.s-m-prompt-box>div>div>button{
+    width:100px;
+    height:30px;
+}
+.move-cancel{
+    margin-left:31px;
+    margin-right:73px;
+}
+
+/*文件大小提示*/
+.file-kb-prompt-box>div{
+    width:360px;
+    height:150px;
+    text-align:center;
+}
+.file-kb-prompt-box>div>p{
+    margin:35px 0;
+}
+.file-kb-ok{
+    width:130px;
+    height:30px;
+}
+/*导入设备进度*/
+.import-schedule-box>div{
+    width:443px;
+    height:170px;
+    padding:0 25px 0 35px;
+}
+.import-schedule-box>div>h4{
+   margin-top:26px;
+    font-weight:normal;
+}
+.import-speed{
+    width:100%;
+    height:24px;
+    text-align:right;
+    font-size: 12px;
+    color: #989898;
+    padding:4px 0;
+}
+.import-per{
+    text-align: center;
+    font-size: 12px;
+    color: #989898;
+    margin-top:5px;
+    margin-bottom:15px;
+}
+.import-cal{
+    float:right;
+    width:100px;
+    height:30px;
+}
+
+/*修改文件夹弹框*/
+.edit-file-box .modal-content{
+    width:490px;
+    height: 200px;
+    background: #fff;
+    margin: auto;
+   padding: 40px 50px;
+
+}
+.edit-file-box .modal-content>div{
+    margin-bottom: 30px;
+}
+.edit-file-box .modal-content>div span:first-child{
+    display: inline-block;
+    width:170px;
+}
+.edit-file-box .modal-content>div input{
+    width:210px;
+    border: 1px solid #DBDBDB;
+    border-radius: 6px;
+    padding-left: 10px;
+    height:35px;
+    line-height: 35px;
+    font-size: 16px;
+    color: #4A4A4A;
+}
+.edit-file-box .modal-content button{
+    width: 130px;
+    height: 30px;
+    background: #2890E0;
+    border-radius: 100px;
+    font-size: 12px;
+    color: #FFFFFF;
+
+}
+.edit-file-box .modal-content .cancel{
+    background: #989898;
+    border-radius: 33px;
+    font-size: 12px;
+    color: #FFFFFF;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+/*新建文件夹*/
+.creat-file-box .modal-content{
+    width:450px;
+    height: 200px;
+    background: #fff;
+    margin: auto;
+    padding: 40px 50px;
+}
+.creat-file-box .modal-content button{
+    width: 130px;
+    height: 30px;
+    background: #2890E0;
+    border-radius: 100px;
+    font-size: 12px;
+    color: #FFFFFF;
+
+}
+.creat-file-box .modal-content>div{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.creat-file-box .modal-content>div p{
+    text-align: left;
+    margin-bottom: 20px;
+}
+.creat-file-box .modal-content>div input{
+    width:340px;
+    border: 1px solid #DBDBDB;
+    border-radius: 6px;
+    padding-left: 10px;
+    height:35px;
+    line-height: 35px;
+    font-size: 16px;
+    color: #4A4A4A;
+}
+.creat-file-box .modal-content .cancel{
+    background: #989898;
+    border-radius: 33px;
+    font-size: 12px;
+    color: #FFFFFF;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
