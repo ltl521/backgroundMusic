@@ -111,7 +111,7 @@ $("#new-pwd").on("blur",function(){
                 if(!(new_pwd===new_pwd2)){//不一致
                     $(".ts4").show();
                 }else{//一致
-                    $.ajax({
+                    /*$.ajax({
                         type:"post",
                         url:"/dealModifyLogin",
                         data:{
@@ -138,7 +138,8 @@ $("#new-pwd").on("blur",function(){
                             location.href="/error.html"
                         }
                     })
-                }
+                }*/
+                   location.href="login.html"; 
             }else{
                 $(".ts3").show();
             }
