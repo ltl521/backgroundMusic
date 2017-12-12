@@ -69,7 +69,7 @@ $("#submit").on("click",function(){
     var username=$("#userName").val();
     var pwd=$("#password").val();
     if(username&&pwd){
-        $.ajax({
+        /*$.ajax({
          type:'post',
          url:'json/dealLogin.json',
          data:{"name":username,"pwd":pwd},
@@ -89,7 +89,9 @@ $("#submit").on("click",function(){
                  location.href=result.url;
              }
          }
-         })
+         })*/
+        location.href="operation-panel.html";
+        
     }else{
         if($(".lang-pic").hasClass("chinese")){
             alert("请填写完整用户名和密码")
