@@ -65,7 +65,7 @@ function getFileData(beginNum,folder){
     }
   })
 }
-getData(0);//第一次加载文件夹列表
+//getData(0);//第一次加载文件夹列表
 
 
 
@@ -101,14 +101,14 @@ function scrollGetData(beginNum){
   }
 
 }
-$(".group-list").scroll(function(){
+/*$(".group-list").scroll(function(){
   var divHeight = $(this).height();//容器高度
   var nScrollHeight = $(this)[0].scrollHeight-32;//滚动条需要滚动的高度
   var nScrollTop = $(this)[0].scrollTop;//滚动条滚动的高度
   if(nScrollTop + divHeight >= nScrollHeight) {//滚动到底部
     scrollGetData(LeftScorl);
   }
-});
+});*/
 
 /*右侧滚动*/
 var RightScorl=20;
@@ -159,7 +159,7 @@ function scroolRightData(beginNum,folder){
 
 }
 //判断文件列表滚动事件
-$(".song-table-box").scroll(function(){
+/*$(".song-table-box").scroll(function(){
   var divHeight = $(this).height();//容器高度
   var nScrollHeight = $(this)[0].scrollHeight-24;//滚动条需要滚动的高度
   var nScrollTop = $(this)[0].scrollTop;//滚动条滚动的高度
@@ -167,7 +167,7 @@ $(".song-table-box").scroll(function(){
   if(nScrollTop + divHeight >= nScrollHeight) {//滚动到底部
     scroolRightData(RightScorl,ctr_folder);
   }
-});
+});*/
 
 
 //文件夹列表选择
@@ -178,7 +178,7 @@ $(".group-list").on("click",".folder-item",function(){
   $(".song-table-box")[0].scrollTop=0;
   $(this).siblings("div").removeClass("choosed");
   var crt_folder=$(this).find(".group-name").text();
-  getFileData(0,crt_folder);
+  //getFileData(0,crt_folder);
 
 });
 
@@ -198,7 +198,10 @@ $('.creat-file-box .cancel').on('click',function () {
 //确定新建
 $('.creat-file-box .sure').on('click',function () {
   var folderName=$('#newFileName').val();
-  $.ajax({
+  $('.creat-file-box').hide();
+  var html='<div class="folder-item"><span class="group-pic"></span><span class="group-name">'+folderName+'</span></div>';
+  $(".group-list").append(html);
+ /* $.ajax({
     type:"post",
     url:"json/dealNewFolder.json",
     data:{"folderName":folderName},
@@ -206,7 +209,7 @@ $('.creat-file-box .sure').on('click',function () {
     success:function(data){
       if(data.ret==0){//新建成功
         $('.creat-file-box').hide();
-        /*重新加载文件列表*/
+        /!*重新加载文件列表*!/
         getData(0);
       }
       else if(data.ret==-5){// 新建失败
@@ -216,9 +219,8 @@ $('.creat-file-box .sure').on('click',function () {
           alert("A folder already exists, please input again");
         }
       }
-    },
-    error:function(){}
-  })
+    }
+  })*/
 });
 
 
@@ -246,7 +248,9 @@ $('.edit-file-box .sure').on('click',function () {
   var val1=$('#F-fileName').text();
   var val2=$('#newName').val();
   if(val2){
-    $.ajax({
+    $('.edit-file-box').hide();
+    $('.group-list .choosed .group-name').html(val2);
+  /*  $.ajax({
       type:"post",
       url:"json/dealRenameFolder.json",
       data:{"folderName":val1,"newrName":val2},
@@ -265,7 +269,7 @@ $('.edit-file-box .sure').on('click',function () {
         }
       },
       error:function(){}
-    });
+    });*/
   }else{
     if($(".lang-pic").hasClass("chinese")){
       alert("请输入修改后的文件夹名称")
@@ -294,7 +298,10 @@ $(".del-file-cancel").on("click",function(){
 });
 //确定删除
 $(".del-file-ok").on("click",function(){
-  $.ajax({
+  $(".del-file-box").hide();
+  $(".choosed").remove();
+ var a= $(".folder-item")[0].className+=" choosed";
+ /* $.ajax({
     type:"post",
     url:"json/dealDelFolder.json",
     data:{"folderName":delFloder},
@@ -306,9 +313,8 @@ $(".del-file-ok").on("click",function(){
       }else if(data.ret==-6){//文件夹删除出错
         alert("文件夹删除出错")
       }
-    },
-    error:function(){}
-  })
+    }
+  })*/
 });
 
 
@@ -406,14 +412,14 @@ function moveScrollFolder(beginNum){
 
 
 //判断移动文件时文件夹列表滚动
-$(".target-file").scroll(function(){
+/*$(".target-file").scroll(function(){
   var divHeight = $(this).height();//容器高度
   var nScrollHeight = $(this)[0].scrollHeight-10;//滚动条需要滚动的高度
   var nScrollTop = $(this)[0].scrollTop;//滚动条滚动的高度
   if(nScrollTop + divHeight >= nScrollHeight) {//滚动到底部
     moveScrollFolder(moveScrollNum);
   }
-});
+});*/
 
 
 $(".target-file").on("click","div",function(){
@@ -430,7 +436,8 @@ $(".song-btns-move").on("click",function(){
     }
   }else{
     $(".s-m-prompt-box").show();
-    moveGetFolder(0);
+
+   // moveGetFolder(0);
   }
 });
 //取消移动
@@ -446,7 +453,9 @@ $(".move-ok").on("click",function(){
     var movefile=$(this).find(".song-name").html();//要移动的歌曲名
     filePath="/"+fileFloder+"/"+movefile;//原路径
     newPath="/"+targetFileFolder+"/"+movefile;//新路径
-    $.ajax({
+    $(".s-m-prompt-box").hide();
+    $(_this).remove();
+   /* $.ajax({
       type:"post",
       url:"json/dealMvFile.json",
       data:{"filePath":filePath,"newPath":newPath},
@@ -459,7 +468,7 @@ $(".move-ok").on("click",function(){
           alert("移动出错")
         }
       }
-    })
+    })*/
   });
 
 });
@@ -490,7 +499,9 @@ $(".del-song-ok").on("click",function(){
     var _this=this;
     var delfile=$(this).find(".song-name").html();//要删除的歌曲名称
     delfilePath="/"+delfileFolder+"/"+delfile;//删除的歌曲路径
-    $.ajax({
+    $('.del-song-box').hide();
+    $(_this).remove();
+   /* $.ajax({
       type:"post",
       url:"json/dealDelFile.json",
       data:{"filePath":delfilePath},
@@ -503,7 +514,7 @@ $(".del-song-ok").on("click",function(){
           alert("删除出错")
         }
       }
-    })
+    })*/
   });
 });
 
@@ -517,6 +528,12 @@ $(".file-kb-ok").on("click",function(){
   file.after(file.clone().val(""));
   file.remove();
 });
+$(".downcal").on("click",function(){
+  $(".d1").hide()
+})
+$(".downok").on("click",function(){
+  $(".d1").hide()
+})
 
 //下载歌曲
 $(".song-btns-dl").on("click",function(e){
@@ -524,26 +541,29 @@ $(".song-btns-dl").on("click",function(e){
     e.preventDefault();
     alert("请先选择要下载的歌曲")
   }else{//确定下载
-    $("#download").removeAttr("href");
-    var move_floder=$(".choosed").children(".group-name").html();
-    $(".active .song-name").each(function(){
-      var path='/'+move_floder+'/'+$(this).html();
-      $.ajax({
+    var fileNum=$(".active .song-name").length;
+    if(fileNum>1){
+      alert("请选择一首要下载的歌曲")
+    }else{
+      var move_floder=$(".choosed").children(".group-name").html();
+      var path='/'+move_floder+'/'+$(".active .song-name").html();
+      alert("正在下载")
+   /*   $.ajax({
         type:"post",
         url:"json/dealDownload.json",
         data:{"path":path},
         dataType:"json",
         success:function(data){
           if(data.ret==0){
-            var a = document.getElementById("download");
-            a.href=data.url;
-            a.download=data.filename;
-            a.click();
+            var url=data.url;//下载文件的后端接口
+            $(".d1").show();
+            $(".downok").attr("href",url);
+            $(".downok").attr("download",$(".active .song-name").html());
           }else if(data.ret==-13){
             alert("下载出错")
           }
         }
-      })
-    })
+      })*/
+    }
   }
 });
