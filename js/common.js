@@ -86,12 +86,12 @@ $('.lang-sel .lang-cn').on('click',function (e) {
 
 //点击修改密码
 $(".xgmm").on("click",function(){
-    location.href="/modifyLogin2.html";
+    location.href="modifyLogin.html";
 });
 
 //退出
 $(".tuichu").on("click",function(){
     //跳转到登陆界面
-    window.location.href='/login.html';
+    window.location.href='login.html';
 });
 
